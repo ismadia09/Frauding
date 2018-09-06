@@ -64,6 +64,7 @@ class RouteViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     func setupRouteView(){
+        startPositionTextField.isEnabled = false
         arrivalPositionTextField.isHidden = true
         closeButton.addTarget(self, action: #selector(closeRouteController), for: .touchUpInside)
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -161,9 +162,16 @@ extension RouteViewController : UITableViewDelegate, UITableViewDataSource {
                 })
                
             }
-            
         }
       }
+        
+       if (tableView == self.routeTableView){
+            let routeStepViewController = RouteStepViewController()
+            guard let routes = self.itineraires[indexPath.row].routes else {return}
+            routeStepViewController.routes = routes
+            routeStepViewController.modalPresentationStyle = .overCurrentContext
+            self.present(routeStepViewController, animated: true, completion: nil)
+        }
     }
     func itinerairesInfo(_ itineraires: [Itineraire]) -> [[String : Any]] {
         var allItinerairesInfo = [[String : Any]]()
@@ -179,7 +187,7 @@ extension RouteViewController : UITableViewDelegate, UITableViewDataSource {
                 duration += (route.duration?.intValue)!
                 let vehicleType = route.type!
                 if vehicleType.elementsEqual("public_transport") {
-                    let vehicule = route.vehicule
+                    let vehicule = UidDef.metroDictionary[route.vehicule!]
                     metroList.append("\(vehicule!) ")
                 }
                 if vehicleType.elementsEqual("street_network") {
@@ -204,7 +212,7 @@ extension RouteViewController : CLLocationManagerDelegate {
         if let localisation = locations.first {
             userPosition = localisation.coordinate
             print(localisation.coordinate)
-            startPositionTextField.text = "User Location \(userPosition)"
+            startPositionTextField.text = "Ma Position"
         }
     }
 }

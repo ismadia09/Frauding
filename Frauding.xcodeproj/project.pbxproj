@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		5A1C584921413F9500558C7E /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C584721413F9500558C7E /* StationTableViewCell.swift */; };
 		5A1C584A21413F9500558C7E /* StationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A1C584821413F9500558C7E /* StationTableViewCell.xib */; };
+		5A1C584D2141768400558C7E /* RouteStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C584B2141768400558C7E /* RouteStepTableViewCell.swift */; };
+		5A1C584E2141768400558C7E /* RouteStepTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A1C584C2141768400558C7E /* RouteStepTableViewCell.xib */; };
+		5A1C5851214176C400558C7E /* RouteStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C584F214176C400558C7E /* RouteStepViewController.swift */; };
+		5A1C5852214176C400558C7E /* RouteStepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A1C5850214176C400558C7E /* RouteStepViewController.xib */; };
 		5A656A60213FD0E200B67025 /* RouteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A656A5F213FD0E200B67025 /* RouteRequest.swift */; };
 		5A656A64213FEAF100B67025 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A656A63213FEAF100B67025 /* Route.swift */; };
 		5A656A662140597100B67025 /* ControleurRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A656A652140597100B67025 /* ControleurRequest.swift */; };
@@ -31,6 +35,10 @@
 		0E3EEA44D95AF92C45654AED /* Pods-Frauding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frauding.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Frauding/Pods-Frauding.debug.xcconfig"; sourceTree = "<group>"; };
 		5A1C584721413F9500558C7E /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		5A1C584821413F9500558C7E /* StationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationTableViewCell.xib; sourceTree = "<group>"; };
+		5A1C584B2141768400558C7E /* RouteStepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStepTableViewCell.swift; sourceTree = "<group>"; };
+		5A1C584C2141768400558C7E /* RouteStepTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteStepTableViewCell.xib; sourceTree = "<group>"; };
+		5A1C584F214176C400558C7E /* RouteStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStepViewController.swift; sourceTree = "<group>"; };
+		5A1C5850214176C400558C7E /* RouteStepViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteStepViewController.xib; sourceTree = "<group>"; };
 		5A656A5F213FD0E200B67025 /* RouteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRequest.swift; sourceTree = "<group>"; };
 		5A656A63213FEAF100B67025 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		5A656A652140597100B67025 /* ControleurRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControleurRequest.swift; sourceTree = "<group>"; };
@@ -109,6 +117,10 @@
 				5A656A652140597100B67025 /* ControleurRequest.swift */,
 				5A656A63213FEAF100B67025 /* Route.swift */,
 				5A656A672141149A00B67025 /* UidDef.swift */,
+				5A1C584F214176C400558C7E /* RouteStepViewController.swift */,
+				5A1C5850214176C400558C7E /* RouteStepViewController.xib */,
+				5A1C584B2141768400558C7E /* RouteStepTableViewCell.swift */,
+				5A1C584C2141768400558C7E /* RouteStepTableViewCell.xib */,
 				5A1C584721413F9500558C7E /* StationTableViewCell.swift */,
 				5A1C584821413F9500558C7E /* StationTableViewCell.xib */,
 			);
@@ -186,9 +198,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ACDD230213E9257007D2022 /* LaunchScreen.storyboard in Resources */,
+				5A1C584E2141768400558C7E /* RouteStepTableViewCell.xib in Resources */,
 				5ACDD22D213E9257007D2022 /* Assets.xcassets in Resources */,
 				5AF4A17A213ECF5B0050A864 /* SearchDestinationTableViewCell.xib in Resources */,
 				5ACDD23E213EA8B4007D2022 /* RouteViewController.xib in Resources */,
+				5A1C5852214176C400558C7E /* RouteStepViewController.xib in Resources */,
 				5A1C584A21413F9500558C7E /* StationTableViewCell.xib in Resources */,
 				5ACDD23A213E931D007D2022 /* HomeViewController.xib in Resources */,
 				5ACDD242213EBB4C007D2022 /* RouteTableViewCell.xib in Resources */,
@@ -261,12 +275,14 @@
 				5A656A662140597100B67025 /* ControleurRequest.swift in Sources */,
 				5A656A682141149A00B67025 /* UidDef.swift in Sources */,
 				5ACDD226213E9256007D2022 /* AppDelegate.swift in Sources */,
+				5A1C584D2141768400558C7E /* RouteStepTableViewCell.swift in Sources */,
 				5A656A60213FD0E200B67025 /* RouteRequest.swift in Sources */,
 				5AF4A179213ECF5B0050A864 /* SearchDestinationTableViewCell.swift in Sources */,
 				5ACDD241213EBB4C007D2022 /* RouteTableViewCell.swift in Sources */,
 				5A1C584921413F9500558C7E /* StationTableViewCell.swift in Sources */,
 				5ACDD239213E931D007D2022 /* HomeViewController.swift in Sources */,
 				5A656A64213FEAF100B67025 /* Route.swift in Sources */,
+				5A1C5851214176C400558C7E /* RouteStepViewController.swift in Sources */,
 				5ACDD23D213EA8B4007D2022 /* RouteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

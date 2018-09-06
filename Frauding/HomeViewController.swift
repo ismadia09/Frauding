@@ -55,6 +55,7 @@ class HomeViewController: UIViewController {
     }
 
     func setupHomeView(){
+        view.backgroundColor = UIColor.mainColor()
         stationSearchBar.isHidden = true
         stationSearchBar.delegate = self
         stationsTableView.isHidden = true
@@ -67,10 +68,8 @@ class HomeViewController: UIViewController {
         stationsTableView.register(stationNib, forCellReuseIdentifier: stationsCellId)
         titleLabel.text = "Frauding"
         searchButton.layer.cornerRadius = 4
-        searchButton.layer.borderColor = UIColor.lightGray.cgColor
-        searchButton.layer.borderWidth = 1
         
-        signalisationView.backgroundColor = .red
+        signalisationView.backgroundColor = UIColor(red: 1/255, green: 87/255, blue: 155/255, alpha: 1)
         signalisationView.layer.cornerRadius = 4
         signalisationLabel.text = "Signaler"
         signalisationButton.addTarget(self, action: #selector(report), for: .touchUpInside)
@@ -89,9 +88,10 @@ class HomeViewController: UIViewController {
     }
     
     @objc func report(){
-        guard let postition = userPosition else {return}
+        signalisationLabel.isHidden = true
         stationSearchBar.isHidden = false
         stationsTableView.isHidden = false
+        
     }
     
     
@@ -126,9 +126,15 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
             if response {
                 self.stationSearchBar.isHidden = true
                 self.stationsTableView.isHidden = true
+                self.stationSearchBar.text = ""
+                self.tempStationList.removeAll()
+                self.stationSearchBar.isHidden = true
                 self.signalisationView.backgroundColor = .green
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                    self.signalisationView.backgroundColor = .red
+                    self.stationSearchBar.isHidden = false
+                    self.signalisationLabel.isHidden = false
+                    tableView.reloadData()
                 }
 
             }
