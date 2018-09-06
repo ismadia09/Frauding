@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
 
 class HomeViewController: UIViewController {
 
@@ -23,8 +24,10 @@ class HomeViewController: UIViewController {
     var locationManager : CLLocationManager!
     
     var stationList = [Station]()
+    var tempStationList = [Station]()
     let stationsCellId = "stationsCellId"
     
+    var commitPredicate: NSPredicate?
     override func viewDidLoad() {
         super.viewDidLoad()
         //Utiliser la localisation
@@ -38,6 +41,7 @@ class HomeViewController: UIViewController {
         }
         ControleurRequest.getStationsList(completion: { (data) in
             self.stationList = data
+            self.tempStationList = data
             self.stationsTableView.reloadData()
             
         })
@@ -52,6 +56,7 @@ class HomeViewController: UIViewController {
 
     func setupHomeView(){
         stationSearchBar.isHidden = true
+        stationSearchBar.delegate = self
         stationsTableView.isHidden = true
         stationsTableView.delegate = self
         stationsTableView.dataSource = self
@@ -70,6 +75,11 @@ class HomeViewController: UIViewController {
         signalisationLabel.text = "Signaler"
         signalisationButton.addTarget(self, action: #selector(report), for: .touchUpInside)
         searchButton.addTarget(self, action: #selector(goToRoute), for: .touchUpInside)
+        
+        
+        let searchText = "Gare"
+        let predicate = NSPredicate(format: "name contains [cd] %@", searchText)
+       
     }
     
     @objc func goToRoute() {
@@ -99,17 +109,17 @@ extension HomeViewController : CLLocationManagerDelegate {
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stationList.count
+        return tempStationList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: stationsCellId, for: indexPath) as! StationTableViewCell
-        cell.stationNameLabel.text = stationList[indexPath.row].name
+        cell.stationNameLabel.text = tempStationList[indexPath.row].name
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let idToSend = stationList[indexPath.row].id_name else {
+        guard let idToSend = tempStationList[indexPath.row].id_name else {
             return
         }
         ControleurRequest.reportControleur(id: idToSend) { (response) in
@@ -126,4 +136,18 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+extension HomeViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        tempStationList.removeAll()
+        for station in stationList {
+            let range = station.name?.lowercased().range(of: searchText, options: .caseInsensitive, range: nil, locale: nil)
+            if range != nil {
+                tempStationList.append(station)
+            }
+        }
+      stationsTableView.reloadData()
+    }
 }

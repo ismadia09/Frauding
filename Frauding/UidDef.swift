@@ -10,5 +10,5 @@ import Foundation
 
 class UidDef {
     //static let hostname = "http://localhost:3000/"
-    static let hostname = "http://10.33.0.99:3000/"
+    static let hostname = "http://10.33.0.99:8000/"
 }
