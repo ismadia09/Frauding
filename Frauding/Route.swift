@@ -39,4 +39,11 @@ struct Itineraire {
     let routes : [Route]?
 }
 
+struct Station {
+    let id : NSNumber?
+    let agent : NSNumber?
+    let id_name : String?
+    let name : String?
+}
+
 

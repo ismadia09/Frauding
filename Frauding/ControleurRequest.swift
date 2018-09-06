@@ -13,26 +13,56 @@ import CoreLocation
 
 class ControleurRequest {
     
-    static func reportControleur(from: CLLocationCoordinate2D) -> Bool{
-        let result = false
-        let fromLatitude = from.latitude
-        let fromLongitude = from.longitude
-        //"http://10.33.0.99:3000/?from=2.3749036;48.8467927&to=2.2922926;48.8583736"
-        //let urlString = "http://10.33.0.99:3000/?from=\(fromLongitude);\(fromLatitude)&to=\(toLongitude);\(toLatitude)"
-        let urlString = "\(UidDef.hostname)controleur?from=\(fromLongitude);\(fromLatitude)"
+    static func reportControleur(id : String, completion: @escaping (Bool) -> Void ){
+        var result = false
+        let urlString = "\(UidDef.hostname)alert?id=\(id)"
         guard let url = URL(string: urlString) else {
-            return result
+            return
         }
         
         Alamofire.request(url).responseJSON { (response) in
             if ( response.error != nil) {
                 print("ERROR = \(response.error)")
             }
-            if let JSON = response.result.value{
+            /*if let JSON = response.result.value as? [Any]{
                 print(JSON)
                 print(JSON)
+                
+                
+            }*/
+            if (response.response?.statusCode == 200){
+                result = true
+            }
+            completion(result)
+        }
+    }
+    
+    static func getStationsList(completion: @escaping ([Station]) -> Void ){
+        var stationsList = [Station]()
+        let urlString = "\(UidDef.hostname)get_list_stations"
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        Alamofire.request(url).responseJSON{ (response) in
+            if ( response.error != nil) {
+                print("ERROR = \(response.error)")
+            }
+            if let JSON = response.result.value as? [[String: Any]] {
+                
+                print("################")
+                print(JSON)
+                print("################")
+                
+               for station in JSON{
+                    print("################")
+                    print(station)
+                    print("################")
+                let s = Station(id: station["id"] as! NSNumber, agent: station["agent"] as! NSNumber, id_name: station["id_name"] as! String, name: station["name"] as! String)
+                stationsList.append(s)
+                }
+                completion(stationsList)
             }
         }
-        return result
     }
 }

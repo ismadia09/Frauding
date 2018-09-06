@@ -16,6 +16,8 @@
                 <outlet property="signalisationButton" destination="d4f-0o-Str" id="Ye5-Vu-Bbo"/>
                 <outlet property="signalisationLabel" destination="9Ji-Ub-YCW" id="H3Y-Ms-aR1"/>
                 <outlet property="signalisationView" destination="Abe-PZ-cVl" id="ijh-Ca-cd6"/>
+                <outlet property="stationSearchBar" destination="W6P-gq-QTb" id="vjH-p2-11f"/>
+                <outlet property="stationsTableView" destination="8HP-bT-1dG" id="IA6-R8-Tzk"/>
                 <outlet property="titleLabel" destination="IFG-T9-AwF" id="MLE-Bf-8wW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -58,15 +60,35 @@
                                 <constraint firstAttribute="height" constant="400" id="UKl-Yo-hXv"/>
                             </constraints>
                         </button>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8HP-bT-1dG">
+                            <rect key="frame" x="0.0" y="56" width="335" height="128"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="128" id="lsg-mO-eDf"/>
+                            </constraints>
+                        </tableView>
+                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="W6P-gq-QTb">
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="wN6-BH-73K"/>
+                            </constraints>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="d4f-0o-Str" firstAttribute="top" secondItem="Abe-PZ-cVl" secondAttribute="top" id="2Jd-9G-xv7"/>
+                        <constraint firstItem="W6P-gq-QTb" firstAttribute="top" secondItem="Abe-PZ-cVl" secondAttribute="top" id="Jis-gW-Jrp"/>
+                        <constraint firstAttribute="trailing" secondItem="W6P-gq-QTb" secondAttribute="trailing" id="QdJ-OO-rHc"/>
                         <constraint firstItem="9Ji-Ub-YCW" firstAttribute="leading" secondItem="Abe-PZ-cVl" secondAttribute="leading" constant="20" id="Qrw-Ve-l1Y"/>
+                        <constraint firstItem="8HP-bT-1dG" firstAttribute="top" secondItem="W6P-gq-QTb" secondAttribute="bottom" id="R70-cs-7iD"/>
+                        <constraint firstItem="W6P-gq-QTb" firstAttribute="leading" secondItem="Abe-PZ-cVl" secondAttribute="leading" id="VaY-lj-Dx3"/>
                         <constraint firstItem="d4f-0o-Str" firstAttribute="leading" secondItem="Abe-PZ-cVl" secondAttribute="leading" id="X8A-JH-iKW"/>
                         <constraint firstAttribute="trailing" secondItem="9Ji-Ub-YCW" secondAttribute="trailing" constant="20" id="YsI-il-O15"/>
+                        <constraint firstItem="8HP-bT-1dG" firstAttribute="leading" secondItem="Abe-PZ-cVl" secondAttribute="leading" id="aCd-UO-77c"/>
                         <constraint firstItem="9Ji-Ub-YCW" firstAttribute="top" secondItem="Abe-PZ-cVl" secondAttribute="top" constant="20" id="k7f-cl-L6G"/>
                         <constraint firstAttribute="height" constant="400" id="koV-dx-X6O"/>
+                        <constraint firstAttribute="trailing" secondItem="8HP-bT-1dG" secondAttribute="trailing" id="m73-TQ-WeE"/>
                         <constraint firstAttribute="trailing" secondItem="d4f-0o-Str" secondAttribute="trailing" id="nXG-N7-LqK"/>
                     </constraints>
                 </view>
