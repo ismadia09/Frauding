@@ -1,0 +1,6 @@
+framework module Pods_Frauding {
+  umbrella header "Pods-Frauding-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 class HomeViewController: UIViewController {
 
@@ -15,8 +17,19 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var signalisationView: UIView!
     @IBOutlet weak var signalisationLabel: UILabel!
     @IBOutlet weak var signalisationButton: UIButton!
+    var userPosition : CLLocationCoordinate2D?
+    var locationManager : CLLocationManager!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Utiliser la localisation
+        if CLLocationManager.locationServicesEnabled(){
+            let manager = CLLocationManager()
+            manager.delegate = self
+            manager.startUpdatingLocation()
+            manager.requestWhenInUseAuthorization()
+            self.locationManager = manager
+            
+        }
         setupHomeView()
 
     }
@@ -46,8 +59,20 @@ class HomeViewController: UIViewController {
     }
     
     @objc func report(){
+        guard let postition = userPosition else {return}
+        ControleurRequest.reportControleur(from: postition)
         signalisationView.backgroundColor = .green
     }
     
     
+}
+
+extension HomeViewController : CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let localisation = locations.first {
+            userPosition = localisation.coordinate
+            print(localisation.coordinate)
+            //startPositionTextField.text = "User Location \(userPosition)"
+        }
+    }
 }

@@ -1,0 +1,15 @@
+PODS:
+  - Alamofire (4.7.3)
+  - IQKeyboardManagerSwift (6.1.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.4)
+  - IQKeyboardManagerSwift
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
+
+PODFILE CHECKSUM: c47aaedaef8d248298c8097a00906aed87a6f2b4
+
+COCOAPODS: 1.4.0

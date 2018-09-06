@@ -61,8 +61,8 @@
                             <rect key="frame" x="0.0" y="120" width="355" height="397"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
-                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="2F4-0X-6wg">
-                            <rect key="frame" x="0.0" y="70" width="355" height="50"/>
+                        <searchBar contentMode="redraw" placeholder="Destination" translatesAutoresizingMaskIntoConstraints="NO" id="2F4-0X-6wg">
+                            <rect key="frame" x="50" y="70" width="255" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="LCq-m3-tnC"/>
                             </constraints>
@@ -72,7 +72,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="miX-dc-z20" firstAttribute="top" secondItem="27Q-bf-oUn" secondAttribute="bottom" constant="20" id="0Rl-k7-sIo"/>
-                        <constraint firstItem="2F4-0X-6wg" firstAttribute="leading" secondItem="xb1-cM-qkR" secondAttribute="leading" id="7Ir-xj-XQL"/>
+                        <constraint firstItem="2F4-0X-6wg" firstAttribute="leading" secondItem="xb1-cM-qkR" secondAttribute="leading" constant="50" id="7Ir-xj-XQL"/>
                         <constraint firstAttribute="trailing" secondItem="miX-dc-z20" secondAttribute="trailing" id="G0J-OE-csV"/>
                         <constraint firstAttribute="trailing" secondItem="uof-bW-iRJ" secondAttribute="trailing" constant="50" id="H54-It-FCs"/>
                         <constraint firstAttribute="trailing" secondItem="27Q-bf-oUn" secondAttribute="trailing" constant="50" id="H9k-zo-COy"/>
@@ -81,7 +81,7 @@
                         <constraint firstItem="27Q-bf-oUn" firstAttribute="top" secondItem="uof-bW-iRJ" secondAttribute="bottom" constant="20" id="OjO-d8-vbC"/>
                         <constraint firstAttribute="bottom" secondItem="KhZ-zd-JKI" secondAttribute="bottom" id="QPy-ig-LSa"/>
                         <constraint firstItem="2F4-0X-6wg" firstAttribute="top" secondItem="uof-bW-iRJ" secondAttribute="bottom" constant="20" id="ZGc-2Z-LOb"/>
-                        <constraint firstAttribute="trailing" secondItem="2F4-0X-6wg" secondAttribute="trailing" id="a1x-0B-jsd"/>
+                        <constraint firstAttribute="trailing" secondItem="2F4-0X-6wg" secondAttribute="trailing" constant="50" id="a1x-0B-jsd"/>
                         <constraint firstItem="KhZ-zd-JKI" firstAttribute="top" secondItem="miX-dc-z20" secondAttribute="bottom" id="fkt-NL-fdf"/>
                         <constraint firstItem="27Q-bf-oUn" firstAttribute="leading" secondItem="xb1-cM-qkR" secondAttribute="leading" constant="50" id="mY6-8b-Suz"/>
                         <constraint firstItem="KhZ-zd-JKI" firstAttribute="leading" secondItem="xb1-cM-qkR" secondAttribute="leading" id="nLE-8V-9mL"/>

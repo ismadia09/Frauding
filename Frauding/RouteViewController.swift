@@ -9,9 +9,12 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Alamofire
 
 class RouteViewController: UIViewController {
  
+    var itineraires = [Itineraire]()
+    var allItinerairesInfos = [[String : Any]]()
     @IBOutlet weak var searchDestinationBar: UISearchBar!
     @IBOutlet weak var arrivalPositionTextField: UITextField!
     @IBOutlet weak var closeButton: UIButton!
@@ -61,7 +64,7 @@ class RouteViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     func setupRouteView(){
-        //searchDestinationBar.isHidden = true
+        arrivalPositionTextField.isHidden = true
         closeButton.addTarget(self, action: #selector(closeRouteController), for: .touchUpInside)
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         containerView.layer.cornerRadius = 4
@@ -77,10 +80,11 @@ class RouteViewController: UIViewController {
         
         view.addSubview(searchDestinationTableView)
         searchDestinationTableView.translatesAutoresizingMaskIntoConstraints = false
-        searchDestinationTableView.leadingAnchor.constraint(equalTo: arrivalPositionTextField.leadingAnchor).isActive = true
-        searchDestinationTableView.topAnchor.constraint(equalTo: arrivalPositionTextField.bottomAnchor, constant: 0).isActive = true
+        searchDestinationTableView.leadingAnchor.constraint(equalTo: searchDestinationBar.leadingAnchor).isActive = true
+        searchDestinationTableView.topAnchor.constraint(equalTo: searchDestinationBar.bottomAnchor, constant: 0).isActive = true
         searchDestinationTableView.heightAnchor.constraint(equalToConstant: 75).isActive = true
-        searchDestinationTableView.widthAnchor.constraint(equalTo: arrivalPositionTextField.widthAnchor).isActive = true
+        searchDestinationTableView.widthAnchor.constraint(equalTo: searchDestinationBar.widthAnchor).isActive = true
+        searchDestinationTableView.layer.cornerRadius = 4
         
         
     }
@@ -89,12 +93,19 @@ class RouteViewController: UIViewController {
 extension RouteViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(tableView == self.routeTableView) {
+            return 100
+        }
+        if (tableView == self.searchDestinationTableView){
+            return 75
+        }
+        
         return 75
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (tableView == self.routeTableView) {
-            return 3
+            return itineraires.count
         }
         if (tableView == self.searchDestinationTableView){
             return searchResults.count
@@ -107,6 +118,9 @@ extension RouteViewController : UITableViewDelegate, UITableViewDataSource {
         var cell = UITableViewCell()
         if (tableView == self.routeTableView) {
         let cell1 = tableView.dequeueReusableCell(withIdentifier: routeCellId, for: indexPath) as! RouteTableViewCell
+            cell1.duréeLabel.text = allItinerairesInfos[indexPath.row]["duration"] as! String
+            cell1.métroLabel.text = allItinerairesInfos[indexPath.row]["metro"] as! String
+            cell1.infosLabel.text = allItinerairesInfos[indexPath.row]["walking"] as! String
         cell = cell1
         }
         
@@ -134,10 +148,55 @@ extension RouteViewController : UITableViewDelegate, UITableViewDataSource {
             print("*********")
             print(String(describing: coordinate))
             print("*********")
-            
             self.arrivalPosition = coordinate
+            if (self.userPosition != nil && self.arrivalPosition != nil){
+//                self.itineraires =  RouteRequest.getRoute(from: self.userPosition!, to: self.arrivalPosition!)
+                
+                RouteRequest.getRoute(from: self.userPosition!, to: self.arrivalPosition!, completion: { (data) in
+                    self.itineraires = data
+                     print(self.itineraires)
+                    self.searchDestinationTableView.isHidden = true
+                    self.allItinerairesInfos = self.itinerairesInfo(self.itineraires)
+                    self.routeTableView.reloadData()
+                })
+               
+            }
+            
         }
       }
+    }
+    func itinerairesInfo(_ itineraires: [Itineraire]) -> [[String : Any]] {
+        var allItinerairesInfo = [[String : Any]]()
+        for itineraire in itineraires {
+            guard let routes = itineraire.routes else {
+                return allItinerairesInfo
+            }
+            var duration = 0
+            var metroList : String = ""
+            var walkingDuration = 0
+            var itinerairesInfo : [String : String] = ["duration":"","destination":"", "metro":"", "walking":""]
+            for route in routes {
+                duration += (route.duration?.intValue)!
+                let vehicleType = route.type!
+                if vehicleType.elementsEqual("public_transport") {
+                    let vehicule = route.vehicule
+                    metroList.append("\(vehicule!) ")
+                }
+                if vehicleType.elementsEqual("street_network") {
+                    walkingDuration += (route.duration?.intValue)!
+                }
+                
+            }
+            let destination = routes.last?.to_name_station
+            searchDestinationBar.text = destination
+            itinerairesInfo.updateValue("\(duration) minutes", forKey: "duration")
+            itinerairesInfo.updateValue("\(destination)", forKey: "destination")
+            itinerairesInfo.updateValue("\(metroList)", forKey: "metro")
+            itinerairesInfo.updateValue("\(walkingDuration) mins à pied", forKey: "walking")
+            allItinerairesInfo.append(itinerairesInfo)
+        }
+        
+        return allItinerairesInfo
     }
 }
 extension RouteViewController : CLLocationManagerDelegate {
@@ -155,6 +214,7 @@ extension RouteViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         searchCompleter.queryFragment = searchText
+        searchDestinationTableView.isHidden = false
     }
 }
 

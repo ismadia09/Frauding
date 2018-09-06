@@ -10,9 +10,14 @@ import UIKit
 
 class RouteTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var duréeLabel: UILabel!
+    @IBOutlet weak var métroLabel: UILabel!
+    @IBOutlet weak var okButton: UIButton!
+    @IBOutlet weak var infosLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        okButton.layer.cornerRadius = 4
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
