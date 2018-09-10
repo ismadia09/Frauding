@@ -10,6 +10,7 @@ import UIKit
 
 class StationTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var metroLabel: UILabel!
     @IBOutlet weak var stationNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

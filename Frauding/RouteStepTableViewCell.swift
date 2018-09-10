@@ -18,6 +18,8 @@ class RouteStepTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         controleurImageView.isHidden = true
+        controleurImageView.image!.withRenderingMode(.alwaysTemplate)
+        controleurImageView.tintColor = .red
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

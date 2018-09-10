@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
     var stationList = [Station]()
     var tempStationList = [Station]()
     let stationsCellId = "stationsCellId"
-    
+    let signalisationColor = UIColor(red: 1/255, green: 87/255, blue: 155/255, alpha: 1)
     var commitPredicate: NSPredicate?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +69,7 @@ class HomeViewController: UIViewController {
         titleLabel.text = "Frauding"
         searchButton.layer.cornerRadius = 4
         
-        signalisationView.backgroundColor = UIColor(red: 1/255, green: 87/255, blue: 155/255, alpha: 1)
+        signalisationView.backgroundColor = signalisationColor
         signalisationView.layer.cornerRadius = 4
         signalisationLabel.text = "Signaler"
         signalisationButton.addTarget(self, action: #selector(report), for: .touchUpInside)
@@ -108,6 +108,9 @@ extension HomeViewController : CLLocationManagerDelegate {
 }
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tempStationList.count
     }
@@ -115,6 +118,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: stationsCellId, for: indexPath) as! StationTableViewCell
         cell.stationNameLabel.text = tempStationList[indexPath.row].name
+        cell.metroLabel.text = tempStationList[indexPath.row].id_name
         return cell
     }
     
@@ -131,8 +135,8 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
                 self.stationSearchBar.isHidden = true
                 self.signalisationView.backgroundColor = .green
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                   self.signalisationView.backgroundColor = .red
-                    self.stationSearchBar.isHidden = false
+                   self.signalisationView.backgroundColor = self.signalisationColor
+                    self.stationSearchBar.isHidden = true
                     self.signalisationLabel.isHidden = false
                     tableView.reloadData()
                 }

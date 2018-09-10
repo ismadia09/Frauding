@@ -36,7 +36,7 @@ class RouteStepViewController: UIViewController {
         okButton.addTarget(self, action: #selector(closeRouteController), for: .touchUpInside)
         containerView.layer.cornerRadius = 10
         okButton.layer.cornerRadius = 4
-        let arrivée = (routes?.last?.to_name_station)!
+        guard let arrivée = routes?.last?.to_name_station else {return}
         destinationLabel.text = " Vers \(arrivée)"
         arrivéeLabel.isHidden = true
         arrivéeLabel.text = " Vers \(arrivée)"
@@ -77,7 +77,7 @@ extension RouteStepViewController : UITableViewDelegate, UITableViewDataSource {
         cell.arrivéeLabel.text = route.to_name_station
         let controleurs = (route.stop_point_from_controleurs?.intValue)!
         if (controleurs > 0) {
-            cell.backgroundColor = .red
+            //cell.backgroundColor = .red
             cell.controleurImageView.isHidden = false
         }
         return cell
