@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
     var stationList = [Station]()
     var tempStationList = [Station]()
     let stationsCellId = "stationsCellId"
-    let signalisationColor = UIColor(red: 1/255, green: 87/255, blue: 155/255, alpha: 1)
+    let signalisationColor = UIColor.greenColor()
     var commitPredicate: NSPredicate?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +66,7 @@ class HomeViewController: UIViewController {
         setupMap()
     }
     func setupHomeView(){
+    
         view.backgroundColor = UIColor.mainColor()
         stationSearchBar.isHidden = true
         stationSearchBar.delegate = self
@@ -80,9 +81,12 @@ class HomeViewController: UIViewController {
         titleLabel.text = "Frauding"
         searchButton.layer.cornerRadius = 4
         
-        signalisationView.backgroundColor = signalisationColor
-        signalisationView.layer.cornerRadius = 4
+        signalisationView.backgroundColor = UIColor.mainColor()
+        signalisationView.layer.borderColor = signalisationColor.cgColor
+        signalisationView.layer.borderWidth = 2
+        signalisationView.layer.cornerRadius = 8
         signalisationLabel.text = "Signaler"
+        signalisationLabel.textColor = signalisationColor
         signalisationButton.addTarget(self, action: #selector(report), for: .touchUpInside)
         searchButton.addTarget(self, action: #selector(goToRoute), for: .touchUpInside)
         
@@ -148,9 +152,9 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
                 self.stationSearchBar.text = ""
                 self.tempStationList.removeAll()
                 self.stationSearchBar.isHidden = true
-                self.signalisationView.backgroundColor = .green
+                self.signalisationView.backgroundColor = self.signalisationColor
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                   self.signalisationView.backgroundColor = self.signalisationColor
+                   self.signalisationView.backgroundColor = UIColor.mainColor()
                     self.stationSearchBar.isHidden = true
                     self.signalisationLabel.isHidden = false
                     tableView.reloadData()

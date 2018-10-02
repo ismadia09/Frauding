@@ -18,6 +18,9 @@ class UidDef {
 
 extension UIColor {
     static func mainColor() -> UIColor {
-        return UIColor(red: 64/255, green: 196/255, blue: 255/225, alpha: 1)
+        return UIColor(red: 40/255, green: 40/255, blue: 40/225, alpha: 1)
+    }
+    static func greenColor() -> UIColor {
+        return UIColor(red: 30/255, green: 215/255, blue: 95/255, alpha: 1)
     }
 }
