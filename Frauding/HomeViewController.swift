@@ -13,6 +13,8 @@ import CoreData
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var userPositionButton: UIButton!
+    @IBOutlet weak var homeMapView: MKMapView!
     @IBOutlet weak var stationsTableView: UITableView!
     @IBOutlet weak var stationSearchBar: UISearchBar!
     @IBOutlet weak var titleLabel: UILabel!
@@ -45,7 +47,12 @@ class HomeViewController: UIViewController {
             self.stationsTableView.reloadData()
             
         })
+        let storeCoordinates = CLLocationCoordinate2D.init(latitude: 0, longitude: 0)
+        let region = MKCoordinateRegionMakeWithDistance(storeCoordinates, 250, 250)
+        homeMapView.setRegion(region, animated: true)
+        userPositionButton.layer.cornerRadius = 5
         setupHomeView()
+        
 
     }
 
@@ -53,7 +60,11 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+   
+    @IBAction func getUserPosition(_ sender: Any) {
+        setupMap()
+    }
     func setupHomeView(){
         view.backgroundColor = UIColor.mainColor()
         stationSearchBar.isHidden = true
@@ -83,6 +94,7 @@ class HomeViewController: UIViewController {
     
     @objc func goToRoute() {
         let routeViewController = RouteViewController()
+        routeViewController.userPosition = userPosition
         routeViewController.modalPresentationStyle = .overCurrentContext
         present(routeViewController, animated: true, completion: nil)
     }
@@ -99,12 +111,15 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let localisation = locations.first {
+        if let localisation = locations.first{
+            manager.distanceFilter = 20
             userPosition = localisation.coordinate
             print(localisation.coordinate)
+            setupMap()
             //startPositionTextField.text = "User Location \(userPosition)"
         }
     }
+    
 }
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
@@ -160,4 +175,27 @@ extension HomeViewController: UISearchBarDelegate {
         }
       stationsTableView.reloadData()
     }
+}
+
+extension HomeViewController : MKMapViewDelegate {
+    func setupMap(){
+        guard let latitude = userPosition?.latitude,
+            let longitude = userPosition?.longitude else {
+                return
+        }
+        let storeCoordinates = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
+        let region = MKCoordinateRegionMakeWithDistance(storeCoordinates, 250, 250)
+        //let region = MKCoordinateRegionMake(storeCoordinates, MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = storeCoordinates
+        homeMapView.delegate = self
+        homeMapView.mapType = MKMapType.standard
+        homeMapView.isZoomEnabled = true
+        homeMapView.isScrollEnabled = true
+        homeMapView.addAnnotation(annotation)
+        homeMapView.setRegion(region, animated: true)
+        homeMapView.setCenter(storeCoordinates, animated: true)
+        
+    }
+
 }

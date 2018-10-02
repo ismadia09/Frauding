@@ -71,8 +71,16 @@ extension RouteStepViewController : UITableViewDelegate, UITableViewDataSource {
         cell.départLabel.text = route.from_name_station
         if(route.transfer_type?.elementsEqual("walking"))!{
              cell.metroLabel.text = "à pied"
+            cell.logoWebView.isHidden = true
         }else{
-            cell.metroLabel.text = UidDef.metroDictionary[route.vehicule!]
+            cell.logoWebView.isHidden = false
+           // cell.metroLabel.text = UidDef.metroDictionary[route.vehicule!]
+            let metroImageName = UidDef.metroImageDictionary[route.vehicule!]
+            let path: String = Bundle.main.path(forResource: metroImageName, ofType: "svg")!
+            let url: NSURL = NSURL.fileURL(withPath: path) as NSURL  //Creating a URL which points towards our path
+            //Creating a page request which will load our URL (Which points to our path)
+            let request: NSURLRequest = NSURLRequest(url: url as URL)
+            cell.logoWebView.load(request as URLRequest)
         }
         cell.arrivéeLabel.text = route.to_name_station
         let controleurs = (route.stop_point_from_controleurs?.intValue)!

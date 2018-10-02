@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import WebKit
 
 class RouteStepTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var logoWebView: WKWebView!
     @IBOutlet weak var controleurImageView: UIImageView!
     @IBOutlet weak var départLabel: UILabel!
     @IBOutlet weak var metroLabel: UILabel!
@@ -20,6 +22,7 @@ class RouteStepTableViewCell: UITableViewCell {
         controleurImageView.isHidden = true
         controleurImageView.image!.withRenderingMode(.alwaysTemplate)
         controleurImageView.tintColor = .red
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
