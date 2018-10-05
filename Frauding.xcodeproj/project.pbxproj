@@ -28,6 +28,8 @@
 		5A1C584E2141768400558C7E /* RouteStepTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A1C584C2141768400558C7E /* RouteStepTableViewCell.xib */; };
 		5A1C5851214176C400558C7E /* RouteStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C584F214176C400558C7E /* RouteStepViewController.swift */; };
 		5A1C5852214176C400558C7E /* RouteStepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A1C5850214176C400558C7E /* RouteStepViewController.xib */; };
+		5A30CCF72163CE2B00EFF685 /* MetroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A30CCF52163CE2B00EFF685 /* MetroCollectionViewCell.swift */; };
+		5A30CCF82163CE2B00EFF685 /* MetroCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A30CCF62163CE2B00EFF685 /* MetroCollectionViewCell.xib */; };
 		5A656A60213FD0E200B67025 /* RouteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A656A5F213FD0E200B67025 /* RouteRequest.swift */; };
 		5A656A64213FEAF100B67025 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A656A63213FEAF100B67025 /* Route.swift */; };
 		5A656A662140597100B67025 /* ControleurRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A656A652140597100B67025 /* ControleurRequest.swift */; };
@@ -69,6 +71,8 @@
 		5A1C584C2141768400558C7E /* RouteStepTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteStepTableViewCell.xib; sourceTree = "<group>"; };
 		5A1C584F214176C400558C7E /* RouteStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStepViewController.swift; sourceTree = "<group>"; };
 		5A1C5850214176C400558C7E /* RouteStepViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteStepViewController.xib; sourceTree = "<group>"; };
+		5A30CCF52163CE2B00EFF685 /* MetroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroCollectionViewCell.swift; sourceTree = "<group>"; };
+		5A30CCF62163CE2B00EFF685 /* MetroCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetroCollectionViewCell.xib; sourceTree = "<group>"; };
 		5A656A5F213FD0E200B67025 /* RouteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRequest.swift; sourceTree = "<group>"; };
 		5A656A63213FEAF100B67025 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		5A656A652140597100B67025 /* ControleurRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControleurRequest.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				5ACDD23C213EA8B4007D2022 /* RouteViewController.xib */,
 				5ACDD23F213EBB4C007D2022 /* RouteTableViewCell.swift */,
 				5ACDD240213EBB4C007D2022 /* RouteTableViewCell.xib */,
+				5A30CCF52163CE2B00EFF685 /* MetroCollectionViewCell.swift */,
+				5A30CCF62163CE2B00EFF685 /* MetroCollectionViewCell.xib */,
 				5A656A5F213FD0E200B67025 /* RouteRequest.swift */,
 				5A656A652140597100B67025 /* ControleurRequest.swift */,
 				5A656A63213FEAF100B67025 /* Route.swift */,
@@ -270,6 +276,7 @@
 				5A18A78021625239007B06E9 /* M5genRVB.svg in Resources */,
 				5A18A77821625239007B06E9 /* M8genRVB.svg in Resources */,
 				5A18A77F21625239007B06E9 /* M4genRVB.svg in Resources */,
+				5A30CCF82163CE2B00EFF685 /* MetroCollectionViewCell.xib in Resources */,
 				5A18A77321625239007B06E9 /* M10genRVB.svg in Resources */,
 				5A18A77C21625239007B06E9 /* M3genRVB.svg in Resources */,
 				5A18A77A21625239007B06E9 /* M7genRVB.svg in Resources */,
@@ -343,6 +350,7 @@
 				5A656A662140597100B67025 /* ControleurRequest.swift in Sources */,
 				5A656A682141149A00B67025 /* UidDef.swift in Sources */,
 				5ACDD226213E9256007D2022 /* AppDelegate.swift in Sources */,
+				5A30CCF72163CE2B00EFF685 /* MetroCollectionViewCell.swift in Sources */,
 				5A1C584D2141768400558C7E /* RouteStepTableViewCell.swift in Sources */,
 				5A656A60213FD0E200B67025 /* RouteRequest.swift in Sources */,
 				5AF4A179213ECF5B0050A864 /* SearchDestinationTableViewCell.swift in Sources */,

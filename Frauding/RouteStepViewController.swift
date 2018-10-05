@@ -9,7 +9,7 @@
 import UIKit
 
 class RouteStepViewController: UIViewController {
-
+    
     @IBOutlet weak var arrivéeLabel: UILabel!
     @IBOutlet weak var destinationLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
@@ -25,7 +25,7 @@ class RouteStepViewController: UIViewController {
     @IBOutlet weak var routeStepTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         routeStepTableView.delegate = self
         routeStepTableView.dataSource = self
         routeStepTableView.layer.borderWidth = 0.5
@@ -47,13 +47,13 @@ class RouteStepViewController: UIViewController {
     @objc func closeRouteController(){
         self.dismiss(animated: true, completion: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
 extension RouteStepViewController : UITableViewDelegate, UITableViewDataSource {
@@ -70,17 +70,15 @@ extension RouteStepViewController : UITableViewDelegate, UITableViewDataSource {
         let route = routes![indexPath.row]
         cell.départLabel.text = route.from_name_station
         if(route.transfer_type?.elementsEqual("walking"))!{
-             cell.metroLabel.text = "à pied"
-            cell.logoWebView.isHidden = true
+            cell.metroLabel.text = "à pied"
+            cell.logoMImage.isHidden = true
+            
         }else{
-            cell.logoWebView.isHidden = false
-           // cell.metroLabel.text = UidDef.metroDictionary[route.vehicule!]
+            // cell.metroLabel.text = UidDef.metroDictionary[route.vehicule!]
             let metroImageName = UidDef.metroImageDictionary[route.vehicule!]
-            let path: String = Bundle.main.path(forResource: metroImageName, ofType: "svg")!
-            let url: NSURL = NSURL.fileURL(withPath: path) as NSURL  //Creating a URL which points towards our path
-            //Creating a page request which will load our URL (Which points to our path)
-            let request: NSURLRequest = NSURLRequest(url: url as URL)
-            cell.logoWebView.load(request as URLRequest)
+            cell.metroImage.image = UIImage(named: metroImageName!)
+            cell.logoMImage.isHidden = false
+            
         }
         cell.arrivéeLabel.text = route.to_name_station
         let controleurs = (route.stop_point_from_controleurs?.intValue)!

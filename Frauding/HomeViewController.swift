@@ -51,6 +51,7 @@ class HomeViewController: UIViewController {
         let region = MKCoordinateRegionMakeWithDistance(storeCoordinates, 250, 250)
         homeMapView.setRegion(region, animated: true)
         userPositionButton.layer.cornerRadius = 5
+        stationSearchBar.delegate = self
         setupHomeView()
         
 
@@ -101,6 +102,7 @@ class HomeViewController: UIViewController {
         routeViewController.userPosition = userPosition
         routeViewController.modalPresentationStyle = .overCurrentContext
         present(routeViewController, animated: true, completion: nil)
+        stationSearchBar.resignFirstResponder()
     }
     
     @objc func report(){
@@ -196,6 +198,7 @@ extension HomeViewController : MKMapViewDelegate {
         homeMapView.mapType = MKMapType.standard
         homeMapView.isZoomEnabled = true
         homeMapView.isScrollEnabled = true
+        homeMapView.removeAnnotations(homeMapView.annotations)
         homeMapView.addAnnotation(annotation)
         homeMapView.setRegion(region, animated: true)
         homeMapView.setCenter(storeCoordinates, animated: true)

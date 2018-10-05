@@ -41,6 +41,7 @@ class ControleurRequest {
         var stationsList = [Station]()
         let urlString = "\(UidDef.hostname)get_list_stations"
         guard let url = URL(string: urlString) else {
+            completion(stationsList)
             return
         }
         

@@ -127,6 +127,7 @@ extension RouteViewController : UITableViewDelegate, UITableViewDataSource {
             cell1.duréeLabel.text = allItinerairesInfos[indexPath.row]["duration"] as! String
             cell1.métroLabel.text = allItinerairesInfos[indexPath.row]["metro"] as! String
             cell1.infosLabel.text = allItinerairesInfos[indexPath.row]["walking"] as! String
+            cell1.imagesString = allItinerairesInfos[indexPath.row]["metroImage"] as! [String]
             cell = cell1
         }
         
@@ -168,6 +169,7 @@ extension RouteViewController : UITableViewDelegate, UITableViewDataSource {
                     
                 }
             }
+            searchDestinationBar.resignFirstResponder()
         }
         
         if (tableView == self.routeTableView){
@@ -187,14 +189,19 @@ extension RouteViewController : UITableViewDelegate, UITableViewDataSource {
             }
             var duration = 0
             var metroList : String = ""
+            var metroImages : [String] = []
             var walkingDuration = 0
-            var itinerairesInfo : [String : String] = ["duration":"","destination":"", "metro":"", "walking":""]
+            var itinerairesInfo : [String : Any] = ["duration":"","destination":"", "metro":"", "walking":""]
             for route in routes {
                 duration += (route.duration?.intValue)!
                 let vehicleType = route.type!
                 if vehicleType.elementsEqual("public_transport") {
                     let vehicule = UidDef.metroDictionary[route.vehicule!]
                     metroList.append("\(vehicule!) ")
+                    let imageName = UidDef.metroImageDictionary[route.vehicule!]!
+                    metroImages.append(imageName)
+                    
+                
                 }
                 if vehicleType.elementsEqual("street_network") {
                     walkingDuration += (route.duration?.intValue)!
@@ -207,6 +214,7 @@ extension RouteViewController : UITableViewDelegate, UITableViewDataSource {
             itinerairesInfo.updateValue("\(destination)", forKey: "destination")
             itinerairesInfo.updateValue("\(metroList)", forKey: "metro")
             itinerairesInfo.updateValue("\(walkingDuration) mins à pied", forKey: "walking")
+            itinerairesInfo.updateValue(metroImages, forKey: "metroImage")
             allItinerairesInfo.append(itinerairesInfo)
         }
         
@@ -245,7 +253,6 @@ extension RouteViewController: UISearchBarDelegate {
     }
     
     private func changeConstraint(constant : CGFloat ){
-        
         containerTopAnchor.constant = constant
         searchDestinationTableView.isHidden = true
         UIView.animate(withDuration: 0.5) {

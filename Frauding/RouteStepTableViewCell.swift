@@ -11,7 +11,8 @@ import WebKit
 
 class RouteStepTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var logoWebView: WKWebView!
+    @IBOutlet weak var logoMImage: UIImageView!
+    @IBOutlet weak var metroImage: UIImageView!
     @IBOutlet weak var controleurImageView: UIImageView!
     @IBOutlet weak var départLabel: UILabel!
     @IBOutlet weak var metroLabel: UILabel!
@@ -22,6 +23,7 @@ class RouteStepTableViewCell: UITableViewCell {
         controleurImageView.isHidden = true
         controleurImageView.image!.withRenderingMode(.alwaysTemplate)
         controleurImageView.tintColor = .red
+        metroImage.backgroundColor = .clear
        
     }
 
