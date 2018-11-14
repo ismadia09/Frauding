@@ -27,10 +27,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xb1-cM-qkR">
-                    <rect key="frame" x="0.0" y="420" width="375" height="247"/>
+                    <rect key="frame" x="0.0" y="395" width="375" height="272"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhZ-zd-JKI">
-                            <rect key="frame" x="0.0" y="197" width="375" height="50"/>
+                            <rect key="frame" x="0.0" y="222" width="375" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="NMQ-Ma-Wvo"/>
                             </constraints>
@@ -39,7 +39,7 @@
                             </state>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="miX-dc-z20">
-                            <rect key="frame" x="0.0" y="60" width="375" height="137"/>
+                            <rect key="frame" x="0.0" y="60" width="375" height="162"/>
                             <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="sectionIndexBackgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </tableView>
@@ -78,7 +78,7 @@
             </subviews>
             <color key="backgroundColor" red="0.015686274509803921" green="0.015686274509803921" blue="0.015686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="xb1-cM-qkR" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="400" id="DFB-zc-07o"/>
+                <constraint firstItem="xb1-cM-qkR" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="375" id="DFB-zc-07o"/>
                 <constraint firstItem="xb1-cM-qkR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VsN-Qe-hYn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xb1-cM-qkR" secondAttribute="trailing" id="hsA-WY-fsh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="xb1-cM-qkR" secondAttribute="bottom" id="zO8-5n-Ayg"/>

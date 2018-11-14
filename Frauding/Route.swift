@@ -32,6 +32,8 @@ struct  Route {
     let transfer_type: String?
     let type: String?
     let vehicule : String?
+    let portique_to: Portique?
+    let portique_from: Portique?
     
 }
 
@@ -44,6 +46,13 @@ struct Station {
     let agent : NSNumber?
     let id_name : String?
     let name : String?
+}
+
+struct Portique {
+    let id_name : String?
+    let id : NSNumber?
+    let name : String?
+    let photo : String?
 }
 
 

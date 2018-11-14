@@ -17,9 +17,12 @@ class RouteStepTableViewCell: UITableViewCell {
     @IBOutlet weak var départLabel: UILabel!
     @IBOutlet weak var metroLabel: UILabel!
     @IBOutlet weak var arrivéeLabel: UILabel!
+    @IBOutlet weak var portiqueLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        containerView.backgroundColor = UIColor.greenColor()
         controleurImageView.isHidden = true
         controleurImageView.image!.withRenderingMode(.alwaysTemplate)
         controleurImageView.tintColor = .red

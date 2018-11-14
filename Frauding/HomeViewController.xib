@@ -15,6 +15,7 @@
                 <outlet property="homeMapView" destination="PyW-9w-WPz" id="sXu-vU-jv8"/>
                 <outlet property="searchButton" destination="a1G-v9-CCh" id="5tI-sZ-Nqk"/>
                 <outlet property="signalisationButton" destination="d4f-0o-Str" id="Ye5-Vu-Bbo"/>
+                <outlet property="signalisationContainer" destination="WVy-NY-KzR" id="f8D-aS-2kF"/>
                 <outlet property="signalisationLabel" destination="9Ji-Ub-YCW" id="H3Y-Ms-aR1"/>
                 <outlet property="signalisationView" destination="Abe-PZ-cVl" id="ijh-Ca-cd6"/>
                 <outlet property="stationSearchBar" destination="W6P-gq-QTb" id="vjH-p2-11f"/>
@@ -41,15 +42,14 @@
                         <constraint firstAttribute="height" constant="450" id="zFm-Qk-vgi"/>
                     </constraints>
                 </mapView>
-                <button opaque="NO" contentMode="scaleAspectFit" semanticContentAttribute="playback" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GsF-IP-MJR">
+                <button opaque="NO" contentMode="bottomLeft" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GsF-IP-MJR">
                     <rect key="frame" x="320" y="395" width="35" height="35"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="60J-Zr-qnZ"/>
                         <constraint firstAttribute="width" constant="35" id="Abv-CT-C6f"/>
                     </constraints>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" image="currentLocation"/>
+                    <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    <state key="normal" image="map_marker"/>
                     <connections>
                         <action selector="getUserPosition:" destination="-1" eventType="touchUpInside" id="imP-Jg-vSB"/>
                     </connections>
@@ -69,14 +69,13 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4f-0o-Str">
                                     <rect key="frame" x="0.0" y="0.0" width="335" height="147"/>
                                 </button>
-                                <searchBar contentMode="redraw" barStyle="black" placeholder="Station de métro" translatesAutoresizingMaskIntoConstraints="NO" id="W6P-gq-QTb">
+                                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Station de métro" translatesAutoresizingMaskIntoConstraints="NO" id="W6P-gq-QTb">
                                     <rect key="frame" x="0.0" y="0.0" width="335" height="56"/>
-                                    <color key="barTintColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8HP-bT-1dG">
                                     <rect key="frame" x="0.0" y="51" width="335" height="90"/>
-                                    <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="90" id="yIF-jo-0Iw"/>
                                     </constraints>
@@ -144,7 +143,7 @@
         </view>
     </objects>
     <resources>
-        <image name="currentLocation" width="980" height="982"/>
+        <image name="map_marker" width="30" height="30"/>
         <image name="search" width="30" height="30"/>
     </resources>
 </document>

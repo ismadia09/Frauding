@@ -68,9 +68,12 @@ class RouteViewController: UIViewController {
     func setupRouteView(){
         //startPositionTextField.isEnabled = false
         //arrivalPositionTextField.isHidden = true
+        containerView.backgroundColor = UIColor.mainColor()
+        closeButton.tintColor = UIColor.greenColor()
         closeButton.addTarget(self, action: #selector(closeRouteController), for: .touchUpInside)
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0)
         containerView.layer.cornerRadius = 4
+        routeTableView.backgroundColor = UIColor.mainColor()
         routeTableView.delegate = self
         routeTableView.dataSource = self
         let routeNib = UINib(nibName: "RouteTableViewCell", bundle: nil)
@@ -159,14 +162,21 @@ extension RouteViewController : UITableViewDelegate, UITableViewDataSource {
                 if (self.userPosition != nil && self.arrivalPosition != nil){
                     //                self.itineraires =  RouteRequest.getRoute(from: self.userPosition!, to: self.arrivalPosition!)
                     
-                    RouteRequest.getRoute(from: self.userPosition!, to: self.arrivalPosition!, completion: { (data) in
+                    /*RouteRequest.getRoute(from: self.userPosition!, to: self.arrivalPosition!, completion: { (data) in
+                        self.itineraires = data
+                        print(self.itineraires)
+                        self.searchDestinationTableView.isHidden = true
+                        self.allItinerairesInfos = self.itinerairesInfo(self.itineraires)
+                        self.routeTableView.reloadData()
+                    })*/
+                    
+                    RouteRequest.getTest(from: self.userPosition!, to: self.arrivalPosition!, completion: { (data) in
                         self.itineraires = data
                         print(self.itineraires)
                         self.searchDestinationTableView.isHidden = true
                         self.allItinerairesInfos = self.itinerairesInfo(self.itineraires)
                         self.routeTableView.reloadData()
                     })
-                    
                 }
             }
             searchDestinationBar.resignFirstResponder()
@@ -244,10 +254,10 @@ extension RouteViewController: UISearchBarDelegate {
         changeConstraint( constant: 150)    }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        changeConstraint( constant: 400)    }
+        changeConstraint( constant: 375)    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 400).isActive = true
-        changeConstraint( constant: 400)
+        changeConstraint( constant: 375)
         searchBar.resignFirstResponder()
         
     }

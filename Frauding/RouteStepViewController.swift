@@ -16,8 +16,6 @@ class RouteStepViewController: UIViewController {
     @IBOutlet weak var okButton: UIButton!
     var routes : [Route]? {
         didSet {
-            print(routes)
-            print(routes)
         }
     }
     
@@ -25,21 +23,21 @@ class RouteStepViewController: UIViewController {
     @IBOutlet weak var routeStepTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        containerView.backgroundColor = UIColor.mainColor()
         routeStepTableView.delegate = self
         routeStepTableView.dataSource = self
-        routeStepTableView.layer.borderWidth = 0.5
-        routeStepTableView.layer.borderColor = UIColor.lightGray.cgColor
         let routeStepNib = UINib(nibName: "RouteStepTableViewCell", bundle: nil)
         routeStepTableView.register(routeStepNib, forCellReuseIdentifier: routeStepCellId)
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         okButton.addTarget(self, action: #selector(closeRouteController), for: .touchUpInside)
         containerView.layer.cornerRadius = 10
         okButton.layer.cornerRadius = 4
+        okButton.backgroundColor = UIColor.greenColor()
         guard let arrivée = routes?.last?.to_name_station else {return}
         destinationLabel.text = " Vers \(arrivée)"
         arrivéeLabel.isHidden = true
         arrivéeLabel.text = " Vers \(arrivée)"
+        arrivéeLabel.textColor = UIColor.greenColor()
         
         // Do any additional setup after loading the view.
     }
@@ -58,7 +56,7 @@ class RouteStepViewController: UIViewController {
 
 extension RouteStepViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 125
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,6 +78,11 @@ extension RouteStepViewController : UITableViewDelegate, UITableViewDataSource {
             cell.logoMImage.isHidden = false
             
         }
+        let portique_name = route.portique_from?.name
+        if portique_name != nil {
+             cell.portiqueLabel.text = "Portique : \(route.portique_from!.name!.uppercased())"
+        }
+
         cell.arrivéeLabel.text = route.to_name_station
         let controleurs = (route.stop_point_from_controleurs?.intValue)!
         if (controleurs > 0) {

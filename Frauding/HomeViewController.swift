@@ -13,6 +13,7 @@ import CoreData
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var signalisationContainer: UIView!
     @IBOutlet weak var userPositionButton: UIButton!
     @IBOutlet weak var homeMapView: MKMapView!
     @IBOutlet weak var stationsTableView: UITableView!
@@ -68,6 +69,12 @@ class HomeViewController: UIViewController {
     }
     func setupHomeView(){
     
+        searchButton.tintColor = UIColor.greenColor()
+        searchButton.setTitleColor(UIColor.greenColor(), for: .normal)
+        
+        searchButton.backgroundColor = UIColor.mainColor()
+        signalisationContainer.backgroundColor = UIColor.mainColor()
+        signalisationView.backgroundColor = UIColor.mainColor()
         view.backgroundColor = UIColor.mainColor()
         stationSearchBar.isHidden = true
         stationSearchBar.delegate = self
@@ -75,7 +82,9 @@ class HomeViewController: UIViewController {
         stationsTableView.delegate = self
         stationsTableView.dataSource = self
         stationsTableView.layer.cornerRadius = 4
+        stationsTableView.backgroundColor = UIColor.mainColor()
         stationSearchBar.layer.cornerRadius = 4
+        stationSearchBar.backgroundColor = UIColor.mainColor()
         
         let stationNib = UINib(nibName: "StationTableViewCell", bundle: nil)
         stationsTableView.register(stationNib, forCellReuseIdentifier: stationsCellId)
@@ -180,6 +189,10 @@ extension HomeViewController: UISearchBarDelegate {
             }
         }
       stationsTableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
 

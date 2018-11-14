@@ -87,6 +87,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="containerView" destination="H2p-sc-9uM" id="RnH-Md-7Sm"/>
                 <outlet property="duréeLabel" destination="owD-FX-orp" id="IE9-yS-OfN"/>
                 <outlet property="infosLabel" destination="aJb-vw-lYO" id="jaq-wC-tQ2"/>
                 <outlet property="metroCollectionView" destination="P9l-CY-1de" id="lzs-UC-aWs"/>

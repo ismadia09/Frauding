@@ -16,6 +16,7 @@ class RouteTableViewCell: UITableViewCell {
     @IBOutlet weak var métroLabel: UILabel!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var infosLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
     var imagesString : [String]? {
         didSet{
             metroCollectionView.reloadData()
@@ -31,7 +32,12 @@ class RouteTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        containerView.backgroundColor = UIColor.mainColor()
         okButton.layer.cornerRadius = 10
+        okButton.backgroundColor = UIColor.greenColor()
+        duréeLabel.textColor = UIColor.greenColor()
+        métroLabel.textColor = UIColor.greenColor()
+        infosLabel.textColor = UIColor.greenColor()
         metroCollectionView.delegate = self
         metroCollectionView.dataSource = self
         let nib = UINib(nibName: "MetroCollectionViewCell", bundle: nil)
