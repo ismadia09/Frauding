@@ -43,6 +43,8 @@
 		5ACDD23E213EA8B4007D2022 /* RouteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ACDD23C213EA8B4007D2022 /* RouteViewController.xib */; };
 		5ACDD241213EBB4C007D2022 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACDD23F213EBB4C007D2022 /* RouteTableViewCell.swift */; };
 		5ACDD242213EBB4C007D2022 /* RouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ACDD240213EBB4C007D2022 /* RouteTableViewCell.xib */; };
+		5AD6FA55219D842200956CD5 /* CustomNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6FA54219D842200956CD5 /* CustomNotifications.swift */; };
+		5AD6FA57219D8B0500956CD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6FA56219D8B0400956CD5 /* GoogleService-Info.plist */; };
 		5AF4A179213ECF5B0050A864 /* SearchDestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4A177213ECF5B0050A864 /* SearchDestinationTableViewCell.swift */; };
 		5AF4A17A213ECF5B0050A864 /* SearchDestinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF4A178213ECF5B0050A864 /* SearchDestinationTableViewCell.xib */; };
 		D2B70FE36A87D93A2A319831 /* Pods_Frauding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6754BE1FBA9D3A5728A7A4 /* Pods_Frauding.framework */; };
@@ -77,6 +79,7 @@
 		5A656A63213FEAF100B67025 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		5A656A652140597100B67025 /* ControleurRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControleurRequest.swift; sourceTree = "<group>"; };
 		5A656A672141149A00B67025 /* UidDef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UidDef.swift; sourceTree = "<group>"; };
+		5A6868A2219D74DE00F62B46 /* Frauding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Frauding.entitlements; sourceTree = "<group>"; };
 		5ACDD222213E9256007D2022 /* Frauding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frauding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ACDD225213E9256007D2022 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5ACDD22C213E9257007D2022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 		5ACDD23C213EA8B4007D2022 /* RouteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteViewController.xib; sourceTree = "<group>"; };
 		5ACDD23F213EBB4C007D2022 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		5ACDD240213EBB4C007D2022 /* RouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTableViewCell.xib; sourceTree = "<group>"; };
+		5AD6FA54219D842200956CD5 /* CustomNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotifications.swift; sourceTree = "<group>"; };
+		5AD6FA56219D8B0400956CD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5AF4A177213ECF5B0050A864 /* SearchDestinationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDestinationTableViewCell.swift; sourceTree = "<group>"; };
 		5AF4A178213ECF5B0050A864 /* SearchDestinationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDestinationTableViewCell.xib; sourceTree = "<group>"; };
 		9A6754BE1FBA9D3A5728A7A4 /* Pods_Frauding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Frauding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +162,7 @@
 		5ACDD224213E9256007D2022 /* Frauding */ = {
 			isa = PBXGroup;
 			children = (
+				5A6868A2219D74DE00F62B46 /* Frauding.entitlements */,
 				5A18A763216251EA007B06E9 /* icon_metro_svg */,
 				5ACDD225213E9256007D2022 /* AppDelegate.swift */,
 				5ACDD22C213E9257007D2022 /* Assets.xcassets */,
@@ -165,6 +171,7 @@
 				5AF4A177213ECF5B0050A864 /* SearchDestinationTableViewCell.swift */,
 				5AF4A178213ECF5B0050A864 /* SearchDestinationTableViewCell.xib */,
 				5ACDD237213E931D007D2022 /* HomeViewController.swift */,
+				5AD6FA56219D8B0400956CD5 /* GoogleService-Info.plist */,
 				5ACDD238213E931D007D2022 /* HomeViewController.xib */,
 				5ACDD23B213EA8B4007D2022 /* RouteViewController.swift */,
 				5ACDD23C213EA8B4007D2022 /* RouteViewController.xib */,
@@ -174,6 +181,7 @@
 				5A30CCF62163CE2B00EFF685 /* MetroCollectionViewCell.xib */,
 				5A656A5F213FD0E200B67025 /* RouteRequest.swift */,
 				5A656A652140597100B67025 /* ControleurRequest.swift */,
+				5AD6FA54219D842200956CD5 /* CustomNotifications.swift */,
 				5A656A63213FEAF100B67025 /* Route.swift */,
 				5A656A672141149A00B67025 /* UidDef.swift */,
 				5A1C584F214176C400558C7E /* RouteStepViewController.swift */,
@@ -230,6 +238,14 @@
 				TargetAttributes = {
 					5ACDD221213E9256007D2022 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -269,6 +285,7 @@
 				5A1C584A21413F9500558C7E /* StationTableViewCell.xib in Resources */,
 				5A18A77521625239007B06E9 /* M3bisgenRVB.svg in Resources */,
 				5A18A77721625239007B06E9 /* M6genRVB.svg in Resources */,
+				5AD6FA57219D8B0500956CD5 /* GoogleService-Info.plist in Resources */,
 				5ACDD23A213E931D007D2022 /* HomeViewController.xib in Resources */,
 				5A18A77E21625239007B06E9 /* M13genRVB.svg in Resources */,
 				5ACDD242213EBB4C007D2022 /* RouteTableViewCell.xib in Resources */,
@@ -328,12 +345,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Frauding/Pods-Frauding-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -352,6 +379,7 @@
 				5ACDD226213E9256007D2022 /* AppDelegate.swift in Sources */,
 				5A30CCF72163CE2B00EFF685 /* MetroCollectionViewCell.swift in Sources */,
 				5A1C584D2141768400558C7E /* RouteStepTableViewCell.swift in Sources */,
+				5AD6FA55219D842200956CD5 /* CustomNotifications.swift in Sources */,
 				5A656A60213FD0E200B67025 /* RouteRequest.swift in Sources */,
 				5AF4A179213ECF5B0050A864 /* SearchDestinationTableViewCell.swift in Sources */,
 				5ACDD241213EBB4C007D2022 /* RouteTableViewCell.swift in Sources */,
@@ -496,6 +524,7 @@
 			baseConfigurationReference = 0E3EEA44D95AF92C45654AED /* Pods-Frauding.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Frauding/Frauding.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2STZ642E42;
 				INFOPLIST_FILE = Frauding/Info.plist;
@@ -515,6 +544,7 @@
 			baseConfigurationReference = D4D1FB689BFCD35681D818B2 /* Pods-Frauding.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Frauding/Frauding.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2STZ642E42;
 				INFOPLIST_FILE = Frauding/Info.plist;

@@ -48,7 +48,7 @@ class RouteRequest {
                         var portique_to : Portique?
                         var portique_from : Portique?
                         print(step["portique_to"] as? NSNull)
-                        if (step["portique_to"] as? NSNull == nil && step["portique_from"] as? NSNull == nil){
+                        if (step["portique_to"] as? NSNull != nil && step["portique_from"] as? NSNull != nil){
                             let portitque_toDictionnary = step["portique_to"] as! [String : Any]
                             let portique_fromDictionnary = step["portique_from"] as! [String : Any]
                             
@@ -95,10 +95,10 @@ class RouteRequest {
     }
     
     static func getTest(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, completion: @escaping ([Itineraire]) -> Void ){
-        let fromLatitude = from.latitude
+        /*let fromLatitude = from.latitude
         let fromLongitude = from.longitude
         let toLatitude = to.latitude
-        let toLongitude = to.longitude
+        let toLongitude = to.longitude*/
         var itineraires =  [Itineraire]()
         //"http://10.33.0.99:3000/?from=2.3749036;48.8467927&to=2.2922926;48.8583736"
         //let urlString = "http://10.33.0.99:3000/?from=\(fromLongitude);\(fromLatitude)&to=\(toLongitude);\(toLatitude)"
