@@ -13,7 +13,7 @@ import Firebase
 class CustomNotifications {
     
     
-    static func sendNotification(fcmToken : String, station : String){
+    static func sendNotification(station : String){
         guard let url = URL(string: "https://fcm.googleapis.com/fcm/send") else {
             return
         }
@@ -25,10 +25,10 @@ class CustomNotifications {
         ]
         var parameters : [String : Any] = [:]
             parameters = [
-                "to": fcmToken,
+                "to": "/topics/ALL",
                 "notification" : [
-                    "body" : "",
-                    "title": "Alert"
+                    "body" : "Un problème à la station \(station)",
+                    "title": "Alert "
                 ],
                 "data" : [
                     //"conversationId" : "\(conversationId)",

@@ -101,9 +101,6 @@ class HomeViewController: UIViewController {
         signalisationButton.addTarget(self, action: #selector(report), for: .touchUpInside)
         searchButton.addTarget(self, action: #selector(goToRoute), for: .touchUpInside)
         
-        
-        let searchText = "Gare"
-        let predicate = NSPredicate(format: "name contains [cd] %@", searchText)
        
     }
     
@@ -116,8 +113,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func report(){
-        
-        //CustomNotifications.sendNotification(fcmToken: <#T##String#>, station: <#T##String#>)
+        //CustomNotifications.sendNotification(station: "stationName")
         signalisationLabel.isHidden = true
         stationSearchBar.isHidden = false
         stationsTableView.isHidden = false
@@ -156,11 +152,13 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let idToSend = tempStationList[indexPath.row].id_name else {
+        guard let idToSend = tempStationList[indexPath.row].id_name,
+        let stationName = tempStationList[indexPath.row].name else {
             return
         }
         ControleurRequest.reportControleur(id: idToSend) { (response) in
             if response {
+                CustomNotifications.sendNotification(station: stationName)
                 self.stationSearchBar.isHidden = true
                 self.stationsTableView.isHidden = true
                 self.stationSearchBar.text = ""
