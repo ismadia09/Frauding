@@ -83,7 +83,6 @@ class RouteViewController: UIViewController {
         searchDestinationTableView.dataSource = self
         let searchDestinationNib = UINib(nibName: "SearchDestinationTableViewCell", bundle: nil)
         searchDestinationTableView.register(searchDestinationNib, forCellReuseIdentifier: searchDestinationCellId)
-        
         view.addSubview(searchDestinationTableView)
         searchDestinationTableView.translatesAutoresizingMaskIntoConstraints = false
         searchDestinationTableView.leadingAnchor.constraint(equalTo: searchDestinationBar.leadingAnchor).isActive = true
@@ -93,9 +92,17 @@ class RouteViewController: UIViewController {
         searchDestinationTableView.layer.cornerRadius = 4
         
         searchDestinationTableView.isHidden = true
+        walkingRouteButton.isHidden = true
+        walkingRouteButton.tintColor = UIColor.greenColor()
+        walkingRouteButton.setTitleColor(UIColor.greenColor(), for: .normal)
         
+        walkingRouteButton.addTarget(self, action: #selector(walkingRoute), for: .touchUpInside)
         
-        
+    }
+    
+    @objc
+    func walkingRoute(){
+        UidDef.alertGoMapApp(viewController: self, coordonnees: arrivalPosition)
     }
 }
 
@@ -162,21 +169,23 @@ extension RouteViewController : UITableViewDelegate, UITableViewDataSource {
                 if (self.userPosition != nil && self.arrivalPosition != nil){
                     //                self.itineraires =  RouteRequest.getRoute(from: self.userPosition!, to: self.arrivalPosition!)
                     
-                    /*RouteRequest.getRoute(from: self.userPosition!, to: self.arrivalPosition!, completion: { (data) in
+                    RouteRequest.getRoute(from: self.userPosition!, to: self.arrivalPosition!, completion: { (data) in
                         self.itineraires = data
                         print(self.itineraires)
                         self.searchDestinationTableView.isHidden = true
                         self.allItinerairesInfos = self.itinerairesInfo(self.itineraires)
-                        self.routeTableView.reloadData()
-                    })*/
-                    
-                    RouteRequest.getTest(from: self.userPosition!, to: self.arrivalPosition!, completion: { (data) in
-                        self.itineraires = data
-                        print(self.itineraires)
-                        self.searchDestinationTableView.isHidden = true
-                        self.allItinerairesInfos = self.itinerairesInfo(self.itineraires)
+                        self.walkingRouteButton.isHidden = false
                         self.routeTableView.reloadData()
                     })
+                    
+                    /*RouteRequest.getTest(from: self.userPosition!, to: self.arrivalPosition!, completion: { (data) in
+                        self.itineraires = data
+                        print(self.itineraires)
+                        self.searchDestinationTableView.isHidden = true
+                        self.allItinerairesInfos = self.itinerairesInfo(self.itineraires)
+                        self.walkingRouteButton.isHidden = false
+                        self.routeTableView.reloadData()
+                    })*/
                 }
             }
             searchDestinationBar.resignFirstResponder()

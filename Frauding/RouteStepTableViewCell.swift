@@ -22,6 +22,7 @@ class RouteStepTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = .none
         containerView.backgroundColor = UIColor.greenColor()
         controleurImageView.isHidden = true
         controleurImageView.image!.withRenderingMode(.alwaysTemplate)

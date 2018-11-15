@@ -34,7 +34,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="NMQ-Ma-Wvo"/>
                             </constraints>
-                            <state key="normal" title="Walking Route" image="exit">
+                            <state key="normal" title="Ouvrir dans Plans" image="exit">
                                 <color key="titleColor" red="0.015686274510000001" green="0.015686274510000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>

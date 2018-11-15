@@ -32,8 +32,10 @@ class RouteTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = .none
         containerView.backgroundColor = UIColor.mainColor()
         okButton.layer.cornerRadius = 10
+        okButton.isEnabled = false
         okButton.backgroundColor = UIColor.greenColor()
         duréeLabel.textColor = UIColor.greenColor()
         métroLabel.textColor = UIColor.greenColor()

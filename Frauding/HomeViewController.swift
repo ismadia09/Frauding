@@ -81,6 +81,7 @@ class HomeViewController: UIViewController {
         stationsTableView.isHidden = true
         stationsTableView.delegate = self
         stationsTableView.dataSource = self
+        stationsTableView.separatorColor = .clear
         stationsTableView.layer.cornerRadius = 4
         stationsTableView.backgroundColor = UIColor.mainColor()
         stationSearchBar.layer.cornerRadius = 4
@@ -115,6 +116,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func report(){
+        
         signalisationLabel.isHidden = true
         stationSearchBar.isHidden = false
         stationsTableView.isHidden = false
