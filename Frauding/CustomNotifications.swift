@@ -27,8 +27,8 @@ class CustomNotifications {
             parameters = [
                 "to": "/topics/ALL",
                 "notification" : [
-                    "body" : "Un problème à la station \(station)",
-                    "title": "Alert "
+                    "body" : " Des agents sont disponibles à la station : \(station)",
+                    "title": "Agents disponibles"
                 ],
                 "data" : [
                     //"conversationId" : "\(conversationId)",

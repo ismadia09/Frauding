@@ -48,7 +48,7 @@ class RouteRequest {
                         var portique_to : Portique?
                         var portique_from : Portique?
                         print(step["portique_to"] as? NSNull)
-                        if (step["portique_to"] as? NSNull != nil && step["portique_from"] as? NSNull != nil){
+                        if (step["portique_to"] as? NSNull == nil && step["portique_from"] as? NSNull == nil){
                             let portitque_toDictionnary = step["portique_to"] as! [String : Any]
                             let portique_fromDictionnary = step["portique_from"] as! [String : Any]
                             

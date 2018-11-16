@@ -69,13 +69,17 @@ extension RouteStepViewController : UITableViewDelegate, UITableViewDataSource {
         cell.départLabel.text = route.from_name_station
         if(route.transfer_type?.elementsEqual("walking"))!{
             cell.metroLabel.text = "à pied"
+            cell.metroLabel.isHidden = false
             cell.logoMImage.isHidden = true
+            cell.metroImage.isHidden = true
             
         }else{
             // cell.metroLabel.text = UidDef.metroDictionary[route.vehicule!]
             let metroImageName = UidDef.metroImageDictionary[route.vehicule!]
             cell.metroImage.image = UIImage(named: metroImageName!)
             cell.logoMImage.isHidden = false
+            cell.metroImage.isHidden = false
+            cell.metroLabel.isHidden = true
             
         }
         let portique_name = route.portique_from?.name

@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
     var stationList = [Station]()
     var tempStationList = [Station]()
     let stationsCellId = "stationsCellId"
-    let signalisationColor = UIColor.greenColor()
+    let signalisationColor = UIColor.green
     var commitPredicate: NSPredicate?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,11 +93,11 @@ class HomeViewController: UIViewController {
         searchButton.layer.cornerRadius = 4
         
         signalisationView.backgroundColor = UIColor.mainColor()
-        signalisationView.layer.borderColor = signalisationColor.cgColor
+        signalisationView.layer.borderColor = UIColor.greenColor().cgColor
         signalisationView.layer.borderWidth = 2
         signalisationView.layer.cornerRadius = 8
         signalisationLabel.text = "Signaler"
-        signalisationLabel.textColor = signalisationColor
+        signalisationLabel.textColor = UIColor.greenColor()
         signalisationButton.addTarget(self, action: #selector(report), for: .touchUpInside)
         searchButton.addTarget(self, action: #selector(goToRoute), for: .touchUpInside)
         
